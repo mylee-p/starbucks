@@ -1,25 +1,3 @@
-const searchEl = document.querySelector('.search'); //document=HTML
-const searchInputEl = searchEl.querySelector('input'); //앞에서 명시한 searchEl안에서 input요소를 찾음
-
-searchEl.addEventListener('click', function () {
-  //Logic.. 입력
-  searchInputEl.focus();
-});
-
-searchInputEl.addEventListener('focus', function () {
-  searchEl.classList.add('focused');
-  searchInputEl.setAttribute('placeholder', '통합검색'); 
-  //searchInputEl부분에 어떤HTML속성을 지정한다.
-  //첫번째 인수에는 속성이름을 두번째 인수에는 값을 지정.
-});
-
-searchInputEl.addEventListener('blur', function () {
-  searchEl.classList.remove('focused');
-  searchInputEl.setAttribute('placeholder', ''); 
-  //fous가 해제(블러)되면 placeholder에 빈문자값을 지정.
-});
-
-
 const badgeEl = document.querySelector('header .badges');
 const toTopEl = document.querySelector('#to-top');
 // window : 브라우저 창, 탭, 윈도우 객체라고 부름. 보고있는 화면 자체
@@ -156,8 +134,3 @@ spyEls.forEach(function (spyEl) { //forEach라는 메소드로 각각의 요소�
 //메소드 체이닝을 통해 setClassToggle()이라는 메소드를 추가적으로 뒤에 붙여줄 수 있다.
 //set(무엇인가를 지정할 것이다)Class(그것은 클래스다)Toggle(어떤 클래스를 넣었다 뺐다 제어해주는 역할)
 //addTo() : ScrollMagic이라는 자바스크립트 라이브러리가 필요한 컨트롤러라는 개념의 내용을 추가하기 위해 해당 메소드를 사용해야 함.
-
-
-const thisYear = document.querySelector('.this-year');
-//extContent : 요소가 가지고 있는 글자 내용을 지정(하거나 알아내는 속성) '='기호를 통해 값을 지정.
-thisYear.textContent = new Date().getFullYear(); //2022
