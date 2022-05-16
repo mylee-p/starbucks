@@ -1,0 +1,346 @@
+/* COMMON(공통의 스타일) */
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+img {
+  display: block;
+}
+a {
+  text-decoration: none;
+}
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+.btn {
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box; /*padding속성 적용시 박스 크기 변동 없이*/
+  display: block; /*span태그 등 inline요소들로 버튼을 작성해도 block처럼 사용할 수 있게*/
+  transition: .4s; /*자연스럽게 변동 될 수 있도록*/
+}
+.btn:hover {
+  background-color: #333;
+  color: #fff
+}
+.btn.btn--reverse { /*일치선택자, reverse=반전되는요소, 클래스가2개(20점)로 우선선택자*/
+  background-color: #333;
+  color: #fff;
+}
+.btn.btn--reverse:hover {
+  background-color: transparent; /*투명함을 의미*/
+  color: #333;
+}
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+.btn.btn--brown:hover {
+  color: #FFF;
+  background-color: #592B18;
+}
+.btn.btn--gold {
+  color: #D9AA8A;
+  border-color: #D9AA8A;
+}
+.btn.btn--gold:hover {
+  color: #FFF;
+  background-color: #D9AA8A;
+}
+.btn.btn--white {
+  color: #FFF;
+  border-color: #FFF;
+}
+.btn.btn--white:hover {
+  color: #333;
+  background-color: #FFF;
+}
+.back-to-position {
+  opacity: 0; /*투명*/
+  transition: 1s; /*전환효과 1초*/
+}
+.back-to-position.to-right { /*왼쪽에서 오른쪽으로 나타나는 애니메이션*/
+  transform: translateX(-150px); /*수평으로 -150px만큼 이동*/
+}
+.back-to-position.to-left { /*오른쪽에서 왼족으로 나타나는 애니메이션*/
+  transform: translateX(150px);
+}
+/*.back-to-position이라는 클래스를 가진 요소들이 
+show라는 클래스를 가지고 있는 것의 후손인 경우에는 
+그것이 opacity: 1;을 통해서 다시 화면에 보이고 위치의 변화가 원래 있었던 
+그 지점으로 돌아오는 개념. 즉, show라는 클래스가 해당하는 섹션에 있어야 원래상태로 돌아옴*/
+.show .back-to-position { 
+  opacity: 1;
+  transform: translateX(0);
+}
+.show .back-to-position.delay-0 {
+  transition-delay: 0s;
+}
+.show .back-to-position.delay-1 {
+  transition-delay: .3s;
+}
+.show .back-to-position.delay-2 {
+  transition-delay: .6s;
+}
+.show .back-to-position.delay-3 {
+  transition-delay: .9s;
+}
+
+
+/* HEADER */
+header {
+  width: 100%;
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+  position: fixed; /*브라우저의 뷰포트를 기준으로 배치하겠다 / 가로너비가 최소한으로 줄어들려고 시도함 width:100%를 추가해서 넓혀야함. position: relative;역할도 함*/
+  top: 0;
+  z-index: 9;
+}
+header > .inner { /*header부분의 자식요소인 inner만 적용 >(자식선택자 사용)*/
+  height: 120px;
+}
+header .logo {
+  height: 75px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+header .sub-menu {
+  position: absolute; /*header .inner에 포지션 값이 이미 있음*/
+  top: 10px;
+  right: 0;
+  display: flex;
+}
+header .sub-menu ul.menu {
+  font-family: Arial, sans-serif;
+  display: flex; /*수평정렬*/
+}
+header .sub-menu ul.menu li {
+  position: relative;
+}
+header .sub-menu ul.menu li::before {
+  content: ""; /*before 가상요소, 인라인요소*/
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  position: absolute; /*display가 block으로 바뀜.*/
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+header .sub-menu ul.menu li:first-child:before {
+  /*여러li태그중에 첫번째 태그를 찾아서 그 첫번째 li의 가상요소선택자before부분을 어떻게 할거냐*/
+  display: none;
+}
+header .sub-menu ul.menu li a {
+  background-color: white;
+  font-size: 12px;
+  padding: 11px 16px;
+  display: block;
+  color: #656565;
+}
+header .sub-menu ul.menu li a:hover {
+  color: #000;
+}
+header .sub-menu .search {
+  height: 34px;
+  position: relative;
+}
+header .sub-menu .search input {
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none; /*input요소 선택시 외곽에 파란선이 생기는 것*/
+  background-color: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width .4s;
+}
+header .sub-menu .search input:focus { /*input요소가 포커스 되면~*/
+  width: 90px;
+  border-color: #669900;
+}
+header .sub-menu .search .material-icons {
+  height: 24px; /*material icon의 font-size와 동일*/
+  position: absolute; /*수직 가운데 정렬*/
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto; 
+  transition: .4s; /*앞쪽에 all생략*/
+}
+header .sub-menu .search.focused .material-icons { /*search부분에focus가 된 상태에서는 아이콘을 안보이게 하겠다.*/
+  opacity: 0; /*투명도*/
+}
+header .main-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1; /*main메뉴에서 마우스를 hover했을 때 뱃지 영역이 덮힐 수 있도록 순서를 제어*/
+  display: flex;
+}
+header .main-menu .item {
+
+}
+header .main-menu .item .item__name {
+  padding: 10px 20px 34px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+header .main-menu .item:hover .item__name { /*.item__name, .item__name 둘 다 적용되야하기 때문에 item에 :hover를 넣어줌*/
+  background-color: #2c2a29;
+  color: #669900;
+  border-radius: 6px 6px 0 0;
+}
+header .main-menu .item .item__contents {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  display: none;
+}
+header .main-menu .item:hover .item__contents { /*item부분에 마우스를 올리면 item__contents가 block되어 나타남*/
+  display: block;
+}
+header .main-menu .item .item__contents .contents__menu {
+  background-color: #2c2a29;
+}
+header .main-menu .item .item__contents .contents__menu > ul { /*자식선택자(>) 기호 사용*/
+  display: flex;
+  padding: 20px 0;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li {
+  width: 220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li h4 {
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color: #fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li {
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer; /*마우스커서가 손가락 모양*/
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li:hover {
+  color: #669900;
+}
+header .main-menu .item .item__contents .contents__texture {
+  padding: 26px 0;
+  font-size: 12px;
+  background-image: url("../images/main_menu_pattern.jpg");
+}
+header .main-menu .item .item__contents .contents__texture h4{
+  color: #999;
+  font-weight: 700;
+}
+header .main-menu .item .item__contents .contents__texture p{
+  color: #669900;
+  margin: 4px 0 14px;
+}
+header .badges {
+ position: absolute;
+ top: 132px;
+ right: 12px;
+}
+header .badges .badge {
+  border-radius: 10px;
+  overflow: hidden; /*이미지가 border-radius를 통해 둥글게 깎아진 모서리 밖으로 넘치지 않도록*/
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+
+/* FOOTER */
+footer {
+  background-color: #272727;
+  border-top: 1px solid #333;
+}
+footer .inner {
+  padding: 40px 0 60px 0;
+}
+footer .menu {
+  display: flex; /*수평정렬*/
+  justify-content: center; /*수평 가운데 정렬*/
+}
+footer .menu li {
+  position: relative;
+}
+footer .menu li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: #555;
+  position: absolute; /*display값이 자동으로 block으로 바뀜*/
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  margin: auto; /*수직가운데배치*/
+} 
+footer .menu li:last-child::before { /*li태그들 중에 가장 마지막 요소의 before는 어떻게 처리 하겠다*/
+  display: none;
+} 
+footer .menu li a {
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 15px;
+  display: block; /*인라인 요소는 마진과 패딩여백 속성의 위, 아래값을 사용할 수 없으니까 block으로 만들어줌*/
+}
+footer .menu li a.green {
+  color: #669900;
+}
+footer .btn-group {
+  margin-top: 20px;
+  display: flex; /*수평 정렬*/
+  justify-content: center; /*수평 가운데 정렬*/
+}
+footer .btn-group .btn {
+  font-size: 12px;
+  margin-right: 10px;
+}
+footer .btn-group .btn:last-child {
+  margin-right: 0;
+}
+footer .info {
+  margin-top: 30px;
+  text-align: center; /*문자 가운데 정렬*/
+}
+footer .info span { /*span은 inline속성이기 때문에 display: flex;로 수평정렬을 해줄 필요가 없음. 원래 수평정렬이 기본*/
+  margin-right: 20px;
+  color: #999;
+  font-size: 12px;
+}
+footer .info span:last-child {
+  margin-right: 0;
+}
+footer .copyright {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+footer .logo { 
+  margin: 30px auto 0; /*상, 중, 하*/
+}
+/*img요소가 display: block; + margin: 0 auto;인 경우,
+width 속성이 없이도 가운데 정렬 가능. 맨위에 공통스킬로 img요소에 dispaly: block; 지정을 했음.*/
+
